@@ -128,7 +128,7 @@ func (c *SlackConfig) NewBot(clusterName, webProxyAddr string) (common.Messaging
 	if endpoint := c.Slack.APIURL; endpoint != "" {
 		client.SetHostURL(endpoint)
 	} else {
-		client.SetHostURL("https://slack.com/api/")
+		client.SetHostURL("https://discord.com/api/")
 		client.OnAfterResponse(onAfterResponseSlack)
 	}
 

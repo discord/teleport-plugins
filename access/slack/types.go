@@ -27,15 +27,11 @@ import (
 // TODO: Move discord API types out of here
 
 type SlackResponse struct {
-	Ok    bool   `json:"ok"`
-	Error string `json:"error,omitempty"`
 }
 
 type ChatMsgResponse struct {
 	SlackResponse
-	Channel   string `json:"channel"`
-	Timestamp string `json:"ts"`
-	Text      string `json:"text"`
+	Id string `json:"id"`
 }
 
 type Msg struct {
@@ -50,7 +46,7 @@ type Msg struct {
 type SlackMsg struct {
 	Msg
 	BlockItems []BlockItem `json:"blocks,omitempty"`
-	Text       string      `json:"text,omitempty"`
+	Text       string      `json:"content,omitempty"`
 }
 
 type User struct {

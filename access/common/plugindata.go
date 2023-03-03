@@ -52,8 +52,8 @@ func DecodePluginData(dataMap map[string]string) GenericPluginData {
 
 	if str := dataMap["messages"]; str != "" {
 		for _, encodedMsg := range strings.Split(str, ",") {
-			if parts := strings.Split(encodedMsg, "/"); len(parts) == 2 {
-				data.SentMessages = append(data.SentMessages, MessageData{ChannelID: parts[0], MessageID: parts[1]})
+			if parts := strings.Split(encodedMsg, "/"); len(parts) >= 2 {
+				data.SentMessages = append(data.SentMessages, MessageData{ChannelID: strings.Join(parts[0:len(parts)-1], "/"), MessageID: parts[len(parts)-1]})
 			}
 		}
 	}
